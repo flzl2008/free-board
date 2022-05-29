@@ -5,6 +5,7 @@ export default function PostList() {
 
   return (
     <>
+      <h1>게시글 목록</h1>
       {postList.map(post => {
         <article className="post-list">
           <div className="post-list__title">

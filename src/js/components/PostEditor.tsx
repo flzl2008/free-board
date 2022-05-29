@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export default function PostEditor() {
-  const postMode = '게시글 쓰기';
+  const { postId } = useParams();
+  const postMode = postId ? postId + '번 게시글 수정' : '게시글 쓰기';
   const categorys = [
     { name: '공지', value: 'notice' },
     { name: '정보', value: 'info' },
