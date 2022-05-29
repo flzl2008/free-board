@@ -26,7 +26,7 @@ export default function PostEditor() {
             />
           </label>
         </div>
-        <div className="post-write-form__category">
+        <div className="post-editor-form__category">
           <label>
             카테고리
             <select
@@ -41,7 +41,7 @@ export default function PostEditor() {
             </select>
           </label>
         </div>
-        <div className="post-write-form__content">
+        <div className="post-editor-form__content">
           <label>
             내용
             <textarea
@@ -50,7 +50,7 @@ export default function PostEditor() {
             ></textarea>
           </label>
         </div>
-        <div className="post-write-footer">
+        <div className="post-editor-footer">
           <button>글등록</button>
         </div>
       </div>
