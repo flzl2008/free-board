@@ -11,8 +11,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<PostList />}></Route>
-            <Route path="/editor" element={<PostEditor />}></Route>
-            <Route path="/editor/:postId" element={<PostEditor />}></Route>
+            <Route path="/editor" element={<PostEditor />}>
+              <Route path=":postId"></Route>
+            </Route>
           </Routes>
         </BrowserRouter>
       </main>
