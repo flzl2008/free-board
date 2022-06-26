@@ -3,13 +3,13 @@ import { useState } from 'react';
 export default function PostList() {
   const mockPostList = [
     {
-      id: 1,
+      id: '1',
       title: 'test',
       content: '게시글 내용입니다.',
       category: 'notice',
     },
     {
-      id: 2,
+      id: '2',
       title: 'test2',
       content: '게시글 내용입니다2.',
       category: 'info',
