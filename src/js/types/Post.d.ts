@@ -4,3 +4,13 @@ interface Post {
   category: string;
   content: string;
 }
+
+interface Category {
+  name: string;
+  value: string;
+}
+
+type PostEditorFormProps = {
+  postInfo: Post;
+  categorys: Category[];
+};

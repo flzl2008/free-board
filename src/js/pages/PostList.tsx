@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PostItem from '../components/post/PostItem';
 
 export default function PostList() {
-  function getPostList() {
+  const getPostList = () =>
     // mockPostList
-    return [
+    [
       {
         id: '1',
         title: 'test',
@@ -18,7 +19,6 @@ export default function PostList() {
         category: 'info',
       },
     ];
-  }
   const [postList, setPostList] = useState<Post[]>(getPostList());
 
   return (
@@ -29,6 +29,11 @@ export default function PostList() {
           <PostItem key={`post-item-${post.id}`} {...post} />
         ))}
       </div>
+      <section className="post-list-section">
+        <span>
+          <Link to="/editor">글쓰기</Link>
+        </span>
+      </section>
     </>
   );
 }

@@ -1,40 +1,52 @@
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import PostEditorForm from '../components/post/PostEditorForm';
 
 export default function PostEditor() {
-  let isEditMode = false;
-  let { postId } = useParams();
-  let postInfo: Post = {
+  const categorys: Category[] = [
+    { name: '공지', value: 'notice' },
+    { name: '정보', value: 'info' },
+    { name: '잡담', value: 'etc' },
+  ];
+
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [postInfo, setPostInfo] = useState<Post>({
     id: '',
     title: '',
-    category: '',
+    category: categorys[0].value,
     content: '',
-  };
+  });
+  const { postId } = useParams();
+  const navigate = useNavigate();
+  const goPostList = () => navigate('/', { replace: true });
 
-  function getPostInfo(id: string): Post {
+  const getPostInfo = (id: string): Post =>
     // mock data
-    return {
+    ({
       id: id,
       title: 'test title',
       category: 'notice',
       content: 'test content',
-    };
-  }
+    });
 
-  if (postId && isNaN(Number(postId))) {
-    alert('유효하지 않은 post 입니다.');
-    postId = '';
-  }
-  if (postId) {
-    isEditMode = true;
-    postInfo = getPostInfo(postId);
-  }
+  useEffect(() => {
+    if (postId) {
+      if (isNaN(Number(postId))) {
+        goPostList();
+        return alert('유효하지 않은 post 입니다.');
+      }
+
+      setIsEditMode(true);
+      setPostInfo(getPostInfo(postId));
+    }
+  }, [setPostInfo]);
+
   return (
     <>
       <div className="post-write-header">
         <h1>{isEditMode ? `${postInfo.id}번 게시글 수정` : '게시글 쓰기'}</h1>
       </div>
-      <PostEditorForm id={postInfo.id} title={postInfo.title} category={postInfo.category} content={postInfo.content} />
+      <PostEditorForm postInfo={postInfo} categorys={categorys} />
     </>
   );
 }

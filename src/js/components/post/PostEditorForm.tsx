@@ -1,19 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-export default function PostEditorForm(props: Post) {
-  const categorys = [
-    { name: '공지', value: 'notice' },
-    { name: '정보', value: 'info' },
-    { name: '잡담', value: 'etc' },
-  ];
-  const [title, setTitle] = useState(props.title ? props.title : '');
-  const [category, setCategory] = useState(props.category ? props.category : categorys[0].value);
-  const [content, setContent] = useState(props.content ? props.content : '');
+export default function PostEditorForm(props: PostEditorFormProps) {
+  const categorys: Category[] = props.categorys;
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    setTitle(props.postInfo.title);
+    setCategory(props.postInfo.category);
+    setContent(props.postInfo.content);
+  });
 
   return (
     <>
-      <div className="post-write-form">
-        <div className="post-write-form__title">
+      <div className="post-editor-form">
+        <div className="post-editor-form__title">
           <label>
             제목
             <input value={title} onChange={event => setTitle(event.target.value)} />
@@ -39,6 +42,7 @@ export default function PostEditorForm(props: Post) {
         </div>
         <div className="post-editor-footer">
           <button>글등록</button>
+          <Link to="/">목록으로</Link>
         </div>
       </div>
     </>
