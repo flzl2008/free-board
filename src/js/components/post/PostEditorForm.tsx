@@ -11,7 +11,7 @@ export default function PostEditorForm(props: PostEditorFormProps) {
     setTitle(props.postInfo.title);
     setCategory(props.postInfo.category);
     setContent(props.postInfo.content);
-  });
+  }, [props]);
 
   return (
     <>

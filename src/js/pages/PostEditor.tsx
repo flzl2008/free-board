@@ -39,7 +39,7 @@ export default function PostEditor() {
       setIsEditMode(true);
       setPostInfo(getPostInfo(postId));
     }
-  }, [setPostInfo]);
+  }, [postId]);
 
   return (
     <>
