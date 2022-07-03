@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+type PostEditorFormProps = {
+  postInfo: Post;
+  categorys: Category[];
+};
+
 export default function PostEditorForm(props: PostEditorFormProps) {
   const categorys: Category[] = props.categorys;
   const [title, setTitle] = useState('');

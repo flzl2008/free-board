@@ -9,8 +9,3 @@ interface Category {
   name: string;
   value: string;
 }
-
-type PostEditorFormProps = {
-  postInfo: Post;
-  categorys: Category[];
-};
